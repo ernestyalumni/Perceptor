@@ -6,7 +6,7 @@
 # PLATFORM: Linux but otherwise Not platform dependent
 #
 # REQUIREMENTS: If this script has requirements that need to be noted, this
-#               is the place to spell those requirements in detail. 
+#               is the place to spell those requirements in detail.
 #
 #         EXAMPLE:  OpenSSH is required for this shell script to work.
 #
@@ -91,7 +91,7 @@ flags_for_cmakes="-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local \
   -DINSTALL_C_EXAMPLES=OFF \
   -DINSTALL_TESTS=OFF \
   -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
-  -DOPENCV_TEST_DATA_PATH=../opencv_extra/testdata 
+  -DOPENCV_TEST_DATA_PATH=../opencv_extra/testdata \
   -DOPENGL_GL_PREFERENCE=LEGACY "
 
 flags_on_one_line="-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_PNG=OFF -DBUILD_TIFF=OFF -DBUILD_TBB=OFF -DBUILD_JPEG=OFF -DBUILD_ZLIB=OFF -DBUILD_EXAMPLES=OFF -DBUILD_JAVA=OFF -DBUILD_opencv_python=OFF -DBUILD_PROTOBUF=ON -DBUILD_WEBP=OFF -DWITH_OPENCL=OFF -DWITH_TBB=ON -DWITH_OPENGL=ON -DOPENCV_ENABLE_NONFREE=ON -D ENABLE_FAST_MATH=1 -D CUDA_FAST_MATH=1 -D WITH_CUBLAS=1 -DWITH_CUDA=ON -DWITH_GTK=ON -DWITH_VTK=OFF -D WITH_CUDNN=ON -D OPENCV_DNN_CUDA=ON -D WITH_FFPEG=ON -DWITH_GSTREAMER=ON -DWITH_GSTREAMER_0_10=ON -DWITH_OPENEXR=OFF -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DCUDA_ARCH_BIN='5.2 6.1 6.2 7.2 8.6' -DCUDA_ARCH_PTX="" -DWITH_V4L=ON -DBUILD_opencv_python2=OFF -DINSTALL_PYTHON_EXAMPLES=OFF -DINSTALL_C_EXAMPLES=OFF -DINSTALL_TESTS=OFF -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DOPENCV_TEST_DATA_PATH=../opencv_extra/testdata -DOPENGL_GL_PREFERENCE=LEGACY "
@@ -113,7 +113,7 @@ function install_required
   sudo apt-get install build-essential cmake pkg-config git
 
   # GTK+2.x or higher, including headers (libgtk2.0-dev), required.
-  # ffmpeg or libav development packages: libavcodec-dev, libavformat-dev, 
+  # ffmpeg or libav development packages: libavcodec-dev, libavformat-dev,
   # libswscale-dev
   sudo apt-get install libgtk-3-dev libavcodec-dev libavformat-dev \
     libswscale-dev libavresample-dev
@@ -203,7 +203,7 @@ make_build_dir_cmake_and_make ()
     # Default to 2 cores.
     make -j2
   fi
-} 
+}
 
 ##########################################################
 #               BEGINNING OF MAIN
