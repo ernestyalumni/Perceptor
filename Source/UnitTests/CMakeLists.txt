@@ -2,9 +2,11 @@ ENABLE_TESTING()
 
 ADD_EXECUTABLE(Check
   CUDAToolkit/MemoryManagement_tests.cu
+  OpenCV/ReadImageTests.cpp
   )
 
 TARGET_LINK_LIBRARIES(Check
+  ${OpenCV_LIBS}
   gtest_main)
 
 INCLUDE(GoogleTest)
