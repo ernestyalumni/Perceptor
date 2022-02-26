@@ -9,6 +9,8 @@
 #               is the place to spell those requirements in detail.
 #
 #         EXAMPLE:  OpenSSH is required for this shell script to work.
+# This is meant to be run in a new subdir you would make from the "top" dir of
+# your OpenCV local repository clone.
 #
 # PURPOSE: Build OpenCV with CUDA with C++ only, no Python.
 #
@@ -136,10 +138,12 @@ function install_optional_imageIO
 }
 
 # cf. https://gist.github.com/raulqf/f42c718a658cddc16f9df07ecc627be7
+# cf. https://yunusmuhammad007.medium.com/build-and-install-opencv-4-5-3-on-jetson-nano-with-cuda-opencl-opengl-and-gstreamer-enable-6dc7141be272
 function install_optional_audio_video
 {
   # Video/Audio Libs - FFMPEG, GSTREAMER, x264 and so on.
-  sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+  sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
+    libgstreamer-plugins-good1.0-dev
 }
 
 # Parallelism library C++ for CPU
@@ -149,9 +153,10 @@ function install_optional_cpu_parallelism
 }
 
 # cf. $ sudo apt-get install libprotobuf-dev protobuf-compiler
-function install_optional_protobuf
+function install_optional_dependencies
 {
-  sudo apt-get install libprotobuf-dev protobuf-compiler
+  sudo apt-get install libprotobuf-dev protobuf-compiler liblapack-dev \
+    liblapacke-dev libtesseract-dev libhdf5-serial-dev
 }
 
 function check_for_opencv_contrib()
@@ -217,7 +222,9 @@ install_optional_imageIO
 
 install_optional_cpu_parallelism
 
-install_optional_protobuf
+install_optional_audio_video
+
+install_optional_dependencies
 
 check_for_opencv_contrib
 
