@@ -1,5 +1,8 @@
 #!/bin/bash
 #
+# TODO: remove this in favor of separate scripts for Ubuntu (Debian's apt
+# packaging) and Fedora (dnf).
+#
 # REV:    0.1.A (Valid are A, B, D, T, Q, and P)
 #               (For Alpha, Beta, Dev, Test, QA, and Production)
 #
@@ -107,35 +110,24 @@ flags_on_one_line="-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local 
 
 function install_required
 {
-  sudo $1 update
-  sudo $1 upgrade
   # Compiler, required, generic tools.
-  sudo $2 install build-essential cmake pkg-config git
+  # cf. https://unix.stackexchange.com/questions/1338/what-is-the-fedora-equivalent-of-the-debian-build-essential-package
+  sudo dnf install @development-tools cmake pkgconf-pkg-config
 
   # GTK+2.x or higher, including headers (libgtk2.0-dev), required.
   # ffmpeg or libav development packages: libavcodec-dev, libavformat-dev, 
   # libswscale-dev
-  sudo $2 install libgtk-3-dev libavcodec-dev libavformat-dev \
-    libswscale-dev
+  # gstreamer1-libav should have libavcodec-dev.
+  # ffmpeg-devel should have libavformat-dev, libswscale-dev,
+  # libavressample-dev.
+  sudo dnf install gtk4-devel gstreamer1-libav ffmpeg-devel
 }
 
 # cf. https://docs.opencv.org/4.x/d6/d15/tutorial_building_tegra_cuda.html
+# libavutil-dev, libpostproc-dev is installed in dnf with ffmpeg-devel.
 function install_required_tegra_like
 {
-  sudo $1 install libglew-dev zlib1g-dev libavutil-dev libpostproc-dev \
-    libeigen3-dev
-}
-
-# TODO: follow https://www.tomordonez.com/install-opencv-linux/
-function install_required_dnf
-{
-  # To replace   libavcodec-devel libswscale-devel libav-devel \
-  # libavutil-devel ffmpeg
-  sudo dnf install gtk3-devel ffmpeg compat-ffmpeg28-devel
-
-  # Gstreamer
-  # cf. https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c
-  sudo dnf install gstreamer1-devel gstreamer1-plugins-base-tools gstreamer1-doc gstreamer1-plugins-base-devel gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-ugly gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-devel gstreamer1-plugins-bad-free-extras  
+  sudo dnf install glew-devel zlib-devel eigen3-devel
 }
 
 # Image I/O libraries (libs)
@@ -144,23 +136,36 @@ function install_optional_imageIO
   # [optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev,
   # libdc1394-22-dev.
   # libjasper may not be there.
-  sudo $1 install libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev
+  sudo dnf install libpng-devel libjpeg-turbo-devel libtiff-devel \
+    libdc1394-devel jasper-devel
 }
 
+function install_optional_audio_video
+{
+  sudo dnf install ffmpeg-devel
+
+  # Gstreamer
+  # cf. https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c
+  sudo dnf install gstreamer1-devel gstreamer1-plugins-base-tools \
+    gstreamer1-doc gstreamer1-plugins-base-devel gstreamer1-plugins-good \
+    gstreamer1-plugins-good-extras gstreamer1-plugins-ugly \
+    gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-devel \
+    gstreamer1-plugins-bad-free-extras  
+}
 
 # Parallelism library C++ for CPU
 function install_optional_cpu_parallelism
 {
-  sudo $1 install libtbb2 libtbb-dev
+  sudo dnf install tbb-devel
 }
 
 
 # cf. $ sudo apt-get install libprotobuf-dev protobuf-compiler
-function install_optional_protobuf
+function install_optional_dependencies
 {
-  sudo $1 install libprotobuf-dev protobuf-compiler
+  sudo dnf install protobuf protobuf-compiler lapack-devel tesseract-devel \
+    hdf5-devel
 }
-
 
 function check_for_opencv_contrib()
 {
@@ -173,7 +178,6 @@ function check_for_opencv_contrib()
     git clone https://github.com/opencv/opencv_contrib.git
   fi
 }
-
 
 make_build_dir_cmake_and_make ()
 {
@@ -218,41 +222,17 @@ make_build_dir_cmake_and_make ()
 #               BEGINNING OF MAIN
 ##########################################################
 
-# Handle Debian/Ubuntu using apt and Fedora Linux using dnf
+install_required
 
-repo_command="apt"
-repo_get_command="apt-get"
+install_required_tegra_like
 
-# TODO: need to make repository installations for Fedora Linux using dnf.
-# If number of arguments, $#, is -gt, greater than, 0
-if [ $# -gt 0 ]
-then
-  if [ $1 = "dnf" ]
-  then
-    printf "dnf argument given; using dnf."
-    repo_command="dnf"
-    repo_get_command="dnf"
-  else
-    printf "Defaulting to apt as repo."
-  fi
-else
-  printf "No input arguments for apt vs. dnf; defaulting to apt"
-fi
+install_optional_imageIO
 
-if [ repo_command="apt" ]
-then
-  #install_required $repo_command $repo_get_command
+install_optional_audio_video
 
-  #install_required_tegra_like $repo_get_command
+install_optional_cpu_parallelism
 
-  #install_optional_imageIO $repo_get_command
-
-  #install_optional_cpu_parallelism $repo_get_command
-
-  #install_optional_protobuf $repo_get_command
-elif [ repo_command="dnf" ]
-  install_required_dnf
-fi
+install_optional_dependencies
 
 check_for_opencv_contrib
 
