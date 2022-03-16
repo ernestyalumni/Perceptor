@@ -1,0 +1,128 @@
+% file: ImageProcessingAndMoreCUDA.tex
+% 
+% github        : ernestyalumni
+% gmail         : ernestyalumni 
+% linkedin      : ernestyalumni 
+%
+% This code is open-source, governed by the Creative Common license.  Use of this code is governed by the Caltech Honor Code: ``No member of the Caltech community shall take unfair advantage of any other member of the Caltech community.'' 
+
+\documentclass[10pt]{amsart}
+\pdfoutput=1
+%\usepackage{mathtools,amssymb,lipsum,caption}
+\usepackage{mathtools,amssymb,caption}
+
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usetikzlibrary{graphs,matrix,arrows, positioning, shapes}
+
+\usepackage{multicol}
+
+\hypersetup{colorlinks=true,citecolor=[rgb]{0,0.4,0}}
+
+\oddsidemargin=15pt
+\evensidemargin=5pt
+\hoffset-45pt
+\voffset-55pt
+\topmargin=-4pt
+\headsep=5pt
+\textwidth=1120pt
+\textheight=595pt
+\paperwidth=1200pt
+\paperheight=700pt
+\footskip=40pt
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+
+%This defines a new command \questionhead which takes one argument and
+%prints out Question #. with some space.
+\newcommand{\questionhead}[1]
+  {\bigskip\bigskip
+   \noindent{\small\bf Question #1.}
+   \bigskip}
+
+\newcommand{\problemhead}[1]
+  {
+   \noindent{\small\bf Problem #1.}
+   }
+
+\newcommand{\exercisehead}[1]
+  { \smallskip
+   \noindent{\small\bf Exercise #1.}
+  }
+
+\newcommand{\solutionhead}[1]
+  {
+   \noindent{\small\bf Solution #1.}
+   }
+
+
+  \title{Image Processing and More CUDA \\
+\large Image Processing, Digital Image Processing, Multiple View Geometry, CUDA}
+
+\author{Ernest Yeung \href{mailto:ernestyalumni@gmail.com}{ernestyalumni@gmail.com}}
+\date{25 Feb 2022}
+\keywords{C, C++, CUDA, CUDA C/C++, Image Processing, Digital Image Processing, Multiple View Geometry}
+
+\begin{document}
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\lstset{language=C++,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+ commentstyle=\color{darkgreen}
+ }
+%\lstlistoflistings
+
+\maketitle
+
+\tableofcontents
+
+
+\begin{multicols*}{2}
+
+\begin{abstract}
+
+\end{abstract}
+
+
+\section{How Computers Store Data}
+
+
+\part{Docker}
+
+\section{References}
+
+This \href{https://www.cse.wustl.edu/~jain/cse570-18/ftp/m_21cdk.pdf}{lecture} on "Containers, Dockers, and Kubernetes" by Raj Jain for CSE 570-18 led me to this book: N. Poulton, "Docker Deep Dive," Oct 2017, ISBN: 9781521822807 which was bolded "Highly Recommended". Apparently there's a 2020 edition as well.
+
+\end{multicols*}
+
+\begin{thebibliography}{9}
+
+
+\bibitem{SFR2004}
+W. Richard Stevens, Bill Fenner, Andrew M. Rudoff. \textbf{UNIX Network Programming: The Sockets Networking API}. Volume 1. Third Edition. 2004. ISBN: 0-13-141155-1
+
+
+\end{thebibliography}
+
+\end{document}
+
+
+
