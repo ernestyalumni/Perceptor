@@ -101,6 +101,25 @@
 
 \end{abstract}
 
+\part{Embedded Linux: toolchains, bootloaders}
+
+\section{Toolchains}
+
+cf. Vasquez and Simmonds (2021) \cite{VaSi2021}
+
+\subsection{crosstool-ng}
+
+\subsubsection{Using menuconfig of crosstool-ng}
+
+Do either \\
+\verb|./ct-ng menuconfig| or \verb|bin/ct-ng menuconfig| to enter the menu system. Vasquez and Simmonds (2021) \cite{VaSi2021} then refers to Ch. 4 "Configuring and Building the Kernel" for more on menuconfig.
+
+Specific to building a toolchain for Beaglebone Black, \\
+For crosstool-ng-1.22.0, the 2 configuration changes recommended are
+\begin{itemize}
+	\item In \textbf{Paths and misc options}, disable \textbf{Render the toolchain read-only} (\verb|CT_INSTALL_DIR_RO|)
+\end{itemize}
+
 
 \section{How Computers Store Data}
 
@@ -115,6 +134,8 @@ This \href{https://www.cse.wustl.edu/~jain/cse570-18/ftp/m_21cdk.pdf}{lecture} o
 
 \begin{thebibliography}{9}
 
+\bibitem{VaSi2021}
+Frank Vasquez, Chris Simmonds. \textbf{Mastering Embedded Linux Programming} - Third Edition. May 2021. Packt 
 
 \bibitem{SFR2004}
 W. Richard Stevens, Bill Fenner, Andrew M. Rudoff. \textbf{UNIX Network Programming: The Sockets Networking API}. Volume 1. Third Edition. 2004. ISBN: 0-13-141155-1
