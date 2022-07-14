@@ -142,3 +142,6 @@ I then checked-out the latest tag - for example,
 ```
 $ git checkout tags/2023.02
 ```
+## References
+
+https://bootlin.com/training/buildroot/
