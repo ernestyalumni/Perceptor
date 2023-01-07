@@ -1,5 +1,7 @@
 # Perceptor
-Image Processing with C++ OpenCV with CUDA
+
+Computer Vision and Embedded software projects, including
+- Image Processing with C++ OpenCV with CUDA
 
 ## Installing OpenCV with CUDA
 
@@ -115,3 +117,7 @@ I used a multimeter (this was *necessary* to have a multimeter)
 First, "Tinning" the iron, apply
 
 Goal is to heat the pin and the board evening.
+
+## Nvidia Jetson TX2 Developer Kit
+
+64-bit NVIDIA Denver and ARM Cortex-A57 CPUs. Microarchitecture ARMv8-A
