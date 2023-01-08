@@ -12,7 +12,7 @@ INCLUDE_DIRECTORIES(BEFORE ${CMAKE_SOURCE_DIR})
 FIND_PACKAGE(CUDA REQUIRED)
 
 IF (CUDA_FOUND)
-
+  MESSAGE(STATUS "Cuda was found.")
 ENDIF()
 
 FIND_PROGRAM(CCACHE_FOUND ccache)
@@ -32,6 +32,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 # cf. https://docs.opencv.org/3.4/db/df5/tutorial_linux_gcc_cmake.html
+
+MESSAGE("We will now look for OpenCV; this is the CMAKE_MODULE_PATH: " ${CMAKE_MODULE_PATH})
+MESSAGE("We will now look for OpenCV; this is the CMAKE_PREFIX_PATH: " ${CMAKE_PREFIX_PATH})
 
 FIND_PACKAGE(OpenCV REQUIRED)
 
