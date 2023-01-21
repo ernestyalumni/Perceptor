@@ -121,3 +121,9 @@ Goal is to heat the pin and the board evening.
 ## Nvidia Jetson TX2 Developer Kit
 
 64-bit NVIDIA Denver and ARM Cortex-A57 CPUs. Microarchitecture ARMv8-A
+
+### Extra SSD
+
+[Install Samsung SSD on NVIDIA Jetson TX2 ](https://youtu.be/KxZ-e6G7INg)
+
+Samsung V-NAND SSD 850 EVO

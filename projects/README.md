@@ -40,6 +40,9 @@ Could not find tool: readobj
 at: /home/topolo/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-readobj
 ```
 
+## References
 
+Maybe this page helps to actually flash the MCU.
+https://blog.knoldus.com/embedded-rust-build-flash-binary-to-stm32f3discovery/
 
 
