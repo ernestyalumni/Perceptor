@@ -23,6 +23,9 @@ $ rustup target add thumbv7m-none-eabi
 ```
 otherwise, errors would occur.
 
+See
+* https://rust-lang.github.io/rustup-components-history/thumbv7m-none-eabi.html for a list of possible other components.
+
 Also for `cargo readobj` you'll need to install cargo-binutils. Get a list of what's installed like this:
 
 ```
