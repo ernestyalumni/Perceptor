@@ -16,8 +16,8 @@
 # cf. https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions
 ##########################################################
 
-echo $PATH
-export PATH=/usr/local/cuda-12.0/bin${PATH:+:${PATH}}
+echo $PAT
+Hexport PATH=/usr/local/cuda-12.0/bin${PATH:+:${PATH}}
 
 echo $LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.0/lib64\
