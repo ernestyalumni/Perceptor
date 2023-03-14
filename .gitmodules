@@ -1,0 +1,3 @@
+[submodule "dependencies/buildroot"]
+	path = dependencies/buildroot
+	url = https://git.buildroot.net/buildroot

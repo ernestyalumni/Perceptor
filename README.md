@@ -127,3 +127,18 @@ Goal is to heat the pin and the board evening.
 [Install Samsung SSD on NVIDIA Jetson TX2 ](https://youtu.be/KxZ-e6G7INg)
 
 Samsung V-NAND SSD 850 EVO
+
+## `dependencies/`
+
+See https://bootlin.com/doc/training/buildroot/buildroot-labs.pdf
+
+Run `git submodule add` to add a new submodule. For example, this is how I created the `buildroot` submodule:
+```
+cd dependencies/
+git submodule add https://git.buildroot.net/buildroot
+```
+
+I then checked-out the latest tag - for example,
+```
+$ git checkout tags/2023.02
+```
