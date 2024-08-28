@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "lowlevel"
+version = "0.1.0"
+description = "Python Library for Low Level Programming"
+authors = ["InServiceOfX <inserviceofxy@proton.me>"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aioquic = "^1.2.0"
+
+[tool.poetry.group.test.dependencies]
+# The only dependencies that should be added are
+# dependencies used for running tests (e.g., pytest, freezegun, response).
+# Any dependencies that do not meet that criteria will be removed.
+pytest = "^8.1.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
