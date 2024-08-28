@@ -3,6 +3,25 @@
 Computer Vision and Embedded software projects, including
 - Image Processing with C++ OpenCV with CUDA
 
+## Creating and starting a virtual environment for Python 3
+
+Create a directory for a virtual environment:
+
+```
+Perceptor$ python3 -m venv ./venv/
+```
+
+Activate it:
+```
+Perceptor$ source ./venv/bin/activate
+```
+You should see the prompt have a prefix `(venv)`.
+
+Deactivate it:
+```
+deactivate
+```
+
 ## Installing OpenCV with CUDA
 
 ## Load Cells
